@@ -1,0 +1,18 @@
+query: RETRIVE EMPLOYEES WHOSE  joining date is between 24th march 2023 to 17th october 2023
+
+SQL> SELECT *
+  2  FROM employees_22
+  3  WHERE join_date BETWEEN to_date('2023-03-24','yyyy-mm-dd') AND to_date('2023-10-17','yyyy-mm-dd');
+
+    EMP_ID EMP_NAME     SALARY JOIN_DATE    DEPT_ID
+---------- -------- ---------- --------- ----------
+         4 Diana         72000 25-APR-23          4
+         5 Evan          75000 30-MAY-23          5
+         6 Fiona         78000 15-JUN-23          6
+         7 George        80000 20-JUL-23          7
+         8 Hannah        82000 10-AUG-23         10
+         9 Ian           85000 05-SEP-23         11
+        10 Jane          87000 01-OCT-23         14
+        11 Kyle          89000 15-OCT-23         15
+
+8 rows selected.
