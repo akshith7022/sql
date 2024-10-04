@@ -16,3 +16,138 @@ SQL> SELECT *
         11 Kyle          89000 15-OCT-23         15
 
 8 rows selected.
+
+
+SQL> CREATE TABLE depart_22
+  2  (
+  3  dept_id INT PRIMARY KEY,
+  4  dept_name varchar(10)
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE employees_22
+  2  (
+  3  emp_id number(10),
+  4  emp_name varchar2(8),
+  5  salary decimal(10,2),
+  6  join_date date,
+  7  dept_id number(10),
+  8  FOREIGN KEY (dept_id) references depart_21(dept_id)
+  9  );
+
+Table created.
+
+SQL> INSERT INTO depart_22
+  2  VALUES
+  3  (1,'CSE');
+
+1 row created.
+
+SQL> insert ALL
+  2      INTO depart_22 (dept_id, dept_name) VALUES (22, 'Fin')
+  3      INTO depart_22 (dept_id, dept_name) VALUES (3, 'IT')
+  4      INTO depart_22 (dept_id, dept_name) VALUES (4, 'Mark')
+  5      INTO depart_22 (dept_id, dept_name) VALUES (5, 'Sales')
+  6      INTO depart_22 (dept_id, dept_name) VALUES (6, 'Cust')
+  7      INTO depart_22 (dept_id, dept_name) VALUES (7, 'Oper')
+  8      INTO depart_22 (dept_id, dept_name) VALUES (8, 'RBI')
+  9      INTO depart_22 (dept_id, dept_name) VALUES (9, 'Logis')
+ 10      INTO depart_22 (dept_id, dept_name) VALUES (10, 'Legal')
+ 11      INTO depart_22 (dept_id, dept_name) VALUES (11, 'Pro')
+ 12      INTO depart_22 (dept_id, dept_name) VALUES (12, 'Rel')
+ 13      INTO depart_22 (dept_id, dept_name) VALUES (13, 'Assur')
+ 14      INTO depart_22 (dept_id, dept_name) VALUES (14, 'Trnr')
+ 15      INTO depart_22 (dept_id, dept_name) VALUES (15, 'Buss')
+ 16  SELECT * FROM DUAL;
+
+14 rows created.
+
+SQL> INSERT ALL
+  2      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (1, 'Alice', 60000.00, TO_DATE('2023-01-10', 'YYYY-MM-DD'), 1)
+  3      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (2, 'Bob', 65000.00, TO_DATE('2023-02-15', 'YYYY-MM-DD'), 2)
+  4      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (3, 'Charlie', 70000.00, TO_DATE('2023-03-20', 'YYYY-MM-DD'), 3)
+  5      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (4, 'Diana', 72000.00, TO_DATE('2023-04-25', 'YYYY-MM-DD'), 4)
+  6      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (5, 'Evan', 75000.00, TO_DATE('2023-05-30', 'YYYY-MM-DD'), 5)
+  7      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (6, 'Fiona', 78000.00, TO_DATE('2023-06-15', 'YYYY-MM-DD'), 6)
+  8      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (7, 'George', 80000.00, TO_DATE('2023-07-20', 'YYYY-MM-DD'), 7)
+  9      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (8, 'Hannah', 82000.00, TO_DATE('2023-08-10', 'YYYY-MM-DD'), 10)
+ 10      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (9, 'Ian', 85000.00, TO_DATE('2023-09-05', 'YYYY-MM-DD'), 11)
+ 11      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (10, 'Jane', 87000.00, TO_DATE('2023-10-01', 'YYYY-MM-DD'), 14)
+ 12      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (11, 'Kyle', 89000.00, TO_DATE('2023-10-15', 'YYYY-MM-DD'), 15)
+ 13      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (12, 'Laura', 90000.00, TO_DATE('2023-11-20', 'YYYY-MM-DD'), 1)
+ 14      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (13, 'Mark', 92000.00, TO_DATE('2023-12-05', 'YYYY-MM-DD'), 2)
+ 15      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (14, 'Nina', 94000.00, TO_DATE('2023-12-25', 'YYYY-MM-DD'), 3)
+ 16      INTO employees_22 (emp_id, emp_name, salary, join_date, dept_id) VALUES (15, 'Oscar', 96000.00, TO_DATE('2024-01-10', 'YYYY-MM-DD'), 4)
+ 17  SELECT * FROM dual;
+
+15 rows created.
+
+SQL> desc  employees_22
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(10)
+ EMP_NAME                                           VARCHAR2(8)
+ SALARY                                             NUMBER(10,2)
+ JOIN_DATE                                          DATE
+ DEPT_ID                                            NUMBER(10)
+
+SQL> select * from  employees_22;
+
+    EMP_ID EMP_NAME     SALARY JOIN_DATE    DEPT_ID
+---------- -------- ---------- --------- ----------
+         1 Alice         60000 10-JAN-23          1
+         2 Bob           65000 15-FEB-23          2
+         3 Charlie       70000 20-MAR-23          3
+         4 Diana         72000 25-APR-23          4
+         5 Evan          75000 30-MAY-23          5
+         6 Fiona         78000 15-JUN-23          6
+         7 George        80000 20-JUL-23          7
+         8 Hannah        82000 10-AUG-23         10
+         9 Ian           85000 05-SEP-23         11
+        10 Jane          87000 01-OCT-23         14
+        11 Kyle          89000 15-OCT-23         15
+
+    EMP_ID EMP_NAME     SALARY JOIN_DATE    DEPT_ID
+---------- -------- ---------- --------- ----------
+        12 Laura         90000 20-NOV-23          1
+        13 Mark          92000 05-DEC-23          2
+        14 Nina          94000 25-DEC-23          3
+        15 Oscar         96000 10-JAN-24          4
+
+15 rows selected.
+
+SQL> select * from depart_22
+  2
+SQL> select * from depart_22;
+
+   DEPT_ID DEPT_NAME
+---------- ----------
+         1 CSE
+        22 Fin
+         3 IT
+         4 Mark
+         5 Sales
+         6 Cust
+         7 Oper
+         8 RBI
+         9 Logis
+        10 Legal
+        11 Pro
+
+   DEPT_ID DEPT_NAME
+---------- ----------
+        12 Rel
+        13 Assur
+        14 Trnr
+        15 Buss
+
+15 rows selected.
+
+SQL> SELECT *
+  2  FROM employees_22
+  3  WHERE salary = 82000;
+
+    EMP_ID EMP_NAME     SALARY JOIN_DATE    DEPT_ID
+---------- -------- ---------- --------- ----------
+         8 Hannah        82000 10-AUG-23         10
